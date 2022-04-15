@@ -1,5 +1,5 @@
 /*
-  Name: Meng Lin
+  Name: USB UART
   Purpose: Streams serial data over USB UART
   For determining the max speed of streaming: 8 decimal float @ 6666Hz
 
