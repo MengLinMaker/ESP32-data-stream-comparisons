@@ -1,6 +1,6 @@
 # ESP32 data stream comparisons
 ## Description
-Comparing data streaming methods for ESP32. The main comparison is data rate, specifically the number of 4 byte floats that can be sent though in a second. Although reliability is also an important factor.
+Comparing data streaming methods for ESP32. The main comparison is data rate, specifically the number of 4 byte floats that can be sent though in a second. Although reliability is also an important factor. The data is streamed from 1 core only using a timer interrupt for consistency.
 
 ## Comparisons
 ### USB UART - 9900Hz
