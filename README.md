@@ -1,15 +1,20 @@
 # ESP32 data stream comparisons
 ## Description
-Comparing data streaming methods for ESP32. The main comparison is data rate, specifically the number of 4 byte floats that can be sent though in a second. The frequency is calculated and sent as a float. Although reliability is also an important factor. The data is streamed from 1 core only using a timer interrupt for consistency.
+Comparing data streaming methods for ESP32:
+* Reliable data rate - no signs of crashes (max speed may be higher but less reliable).
+* Frequency is calculated as number of 4 byte floats received in a second - sending in batches is valid.
+* The data is sent repeatedly using a timer interrupt for consistency.
+* Note: Bytes/s = freq*4
 
-## Comparisons
-### USB UART - 6666Hz
-Using the built in serial library from arduino IDE. The receiver is the Arduino IDE Serial Monitor.
+## Comparisons - Fastest to slowest
+### USB UART - 9000Hz (wired esp32 to computer)
+Using the built in "serial_library" from arduino IDE. The receiver is the Arduino IDE Serial Monitor. The baud rate was set to 2000000. Note: this is wired and requires good quality usb cable and board. The cheap esp32 boards only acheived a max reliable baud rate of 500000. The rate of printing depends on the number of symbols printed
 
-### WebSerial.h - 10Hz
-Using Ayush Sharma's WebSerial library: https://github.com/ayushsharma82. Higher frequencies lead to buffer overflows
+### esp_now.h - 7200Hz 60batch (wireless esp32 to esp32)
+Using the "esp_now" library by Rui Santos: https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/. This protocol is capable of sending out 12000Hz x 4bytes = 48000bytes/s for short durations in close proximity. Although theoretical maximum is 125000bytes/s, this is unlikely to be achieved; even half this speed is difficult.
 
-### BluetoothSerial.h - 7Hz
-Using the "BluetoothSerial" library from arduino IDE. The receiver is an android app: https://play.google.com/store/apps/details?id=com.giumig.apps.bluetoothserialmonitor. There are some fluctuations in the period. Any higher frequencies will only work for a short while
+### WebSerial.h - 10Hz (wireless esp32 to computer)
+Using Ayush Sharma's WebSerial library: https://github.com/ayushsharma82. Higher frequencies lead to buffer overflows.
 
-## Analysis
+### BluetoothSerial.h - 7Hz (wireless esp32 to android mobile)
+Using the "BluetoothSerial" library from arduino IDE. The receiver is an android app: https://play.google.com/store/apps/details?id=com.giumig.apps.bluetoothserialmonitor. There are some fluctuations in the period. Any higher frequencies will only work for a short while.
