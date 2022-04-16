@@ -7,13 +7,13 @@ Comparing data streaming methods for ESP32:
 * Note: Bytes/s = freq*4
 
 ## Comparisons - Fastest to slowest
-### USB UART - 9000Hz (wired esp32 to computer)
+### USB UART - 9000Hz (wired esp32 to arduino IDE)
 Using the built in "serial_library" from arduino IDE. The receiver is the Arduino IDE Serial Monitor. The baud rate was set to 2000000. Note: this is wired and requires good quality usb cable and board. The cheap esp32 boards only acheived a max reliable baud rate of 500000. The rate of printing depends on the number of symbols printed
 
 ### esp_now.h - 7200Hz 60batch (wireless esp32 to esp32)
 Using the "esp_now" library and modified code by Rui Santos: https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/. This protocol is capable of sending out 12000Hz x 4bytes = 48000bytes/s for short durations in close proximity. Although theoretical maximum is 125000bytes/s, this is unlikely to be achieved; even half this speed is difficult.
 
-### WebSerial.h - 10Hz (wireless esp32 to computer)
+### WebSerial.h - 10Hz (wireless esp32 to website)
 Using Ayush Sharma's WebSerial library: https://github.com/ayushsharma82. Higher frequencies lead to buffer overflows.
 
 ### BluetoothSerial.h - 7Hz (wireless esp32 to android mobile)
