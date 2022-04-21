@@ -8,7 +8,7 @@ Comparing data streaming methods for ESP32:
 #
 #
 ## Comparisons - Fastest to slowest
-### USB UART - 9000Hz (wired esp32 to arduino IDE)
+### USB UART - 9000Hz (wired esp32 to PC)
 Using the built in "serial_library" from arduino IDE. The receiver is the Arduino IDE Serial Monitor. The baud rate was set to 2000000. Note: this is wired and requires good quality usb cable and board. The cheap esp32 boards only acheived a max reliable baud rate of 500000. The rate of printing depends on the number of symbols printed
 
 ### esp_now.h - 7200Hz 60batch (wireless esp32 to esp32)
@@ -22,6 +22,6 @@ Using the "BluetoothSerial" library from arduino IDE. The receiver is an android
 ##
 #
 ## Sensor streaming
-### BNO080 I2C - 200Hz
+### BNO080 I2C - 200Hz (include wireless communication through 2 esp32 to PC)
 Streaming orientation quaternion, acceleration and angular velocity. The I2C rate is 400000kbit/s. The original library and example by Nathan has some inefficiencies: https://github.com/sparkfun/SparkFun_BNO080_Arduino_Library. Data rate is currently capped by the I2C speed. Note:some values are repeated due to the constant need for checking if data is availiable inorder to reveive data updates. This is caused by the Hillcrest's SHTP protocol.
 
