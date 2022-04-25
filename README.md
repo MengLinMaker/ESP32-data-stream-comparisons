@@ -23,5 +23,4 @@ Using the "BluetoothSerial" library from arduino IDE. The receiver is an android
 #
 ## Sensor streaming
 ### BNO080 I2C - 200Hz (include wireless communication through 2 esp32 to PC)
-Streaming orientation quaternion, acceleration and angular velocity. The I2C rate is 400000kbit/s. The original library and example by Nathan has some inefficiencies: https://github.com/sparkfun/SparkFun_BNO080_Arduino_Library. Data rate is currently capped by the I2C speed. Note:some values are repeated due to the constant need for checking if data is availiable inorder to reveive data updates. This is caused by the Hillcrest's SHTP protocol.
-
+Streaming orientation quaternion, acceleration and angular velocity. The I2C rate is 400000kbit/s. The original library and example by Nathan has some inefficiencies: https://github.com/sparkfun/SparkFun_BNO080_Arduino_Library. Data rate is currently capped by the I2C speed. Note:some values are repeated due to the constant need for checking if data is availiable inorder to reveive data updates. This is caused by the Hillcrest's SHTP protocol. Inefficiencies can be recuced with interrupts.
